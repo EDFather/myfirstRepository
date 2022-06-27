@@ -90,5 +90,5 @@ jobs:
         key: ${{ secrets.KEY }}
         port: ${{ secrets.PORT }}
         script: 
-              - cd /home/test
-              - echo "hello Dimka" >> filetestssh.txt
+               cd /home/test/
+               echo "hello Dimka" >> filetestssh.txt
