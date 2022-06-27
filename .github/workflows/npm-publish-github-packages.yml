@@ -4,6 +4,7 @@ on:
   push:  
 env:
   IMAGE_NAME: mychatconteyner
+  OVNER_NAME: EDFather
 jobs:
   Docker_Build: 
     runs-on: ubuntu-latest
@@ -12,6 +13,6 @@ jobs:
      - name: push Docker Conteiner github
        run:  docker build . -t $IMAGE_NAME -f Dockerfile
      - name: push docker conteiner ghcr.io
-       run: IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME:${{ github.run_id }} 
-            
+       run: IMAGE_ID=ghcr.io/$OVNER_NAME/$IMAGE_NAME:${{ github.run_id }} 
+            docker push $IMAGE_ID
     
