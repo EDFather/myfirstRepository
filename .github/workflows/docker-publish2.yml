@@ -1,6 +1,5 @@
 name: Docker_push
 on:
-  push:
   schedule:
    - cron:  '30 5,17 * * *'
 env:
@@ -68,5 +67,5 @@ jobs:
          key: ${{ secrets.KEY }}
          port: ${{ secrets.PORT }}
          script: 
-               docker pull ${{ steps.meta.outputs.tags }}@${{ steps.build-and-push.outputs.digest }}
+               echo ${{ steps.meta.outputs.tags }}@${{ steps.build-and-push.outputs.digest }}
                
