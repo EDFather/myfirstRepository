@@ -6,8 +6,9 @@ jobs:
   Docker_Build: 
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v3
+     - uses: docker/login-action@v2
      - name: push Docker Conteiner github
-     - run:  docker build . --file Dockerfile --tags $IMAGE_NAME
+     - run:  docker build . -t --tags $IMAGE_NAME
      - name: Rub Log Github 
-     - run: echo "${{ secrets.GITHUB_TOKEN }}"
+     - run: echo "${{ secrets.GITHUB_TOKEN }}"  
+     - run: echo $IMAGE_NAME   
