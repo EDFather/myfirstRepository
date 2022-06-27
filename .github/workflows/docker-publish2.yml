@@ -67,5 +67,4 @@ jobs:
          key: ${{ secrets.KEY }}
          port: ${{ secrets.PORT }}
          script: 
-               echo ${{ steps.meta.outputs.tags }}@${{ steps.build-and-push.outputs.digest }}
-               
+               docker pull ${{ steps.meta.outputs.tags }}
