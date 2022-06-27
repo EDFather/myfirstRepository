@@ -11,8 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      - name: install and start npm
+      - name: install npm
       - run: npm install
+      - name:  start
       - run: npm start
   Docker_Build: 
     runs-on: ubuntu-latest
