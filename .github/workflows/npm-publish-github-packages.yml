@@ -3,7 +3,7 @@ name: Chat4
 on:
   push:  
 env:
-  IMAGE_NAME: DockerCHat
+  IMAGE_NAME: dockerchat
 jobs:
   Docker_Build: 
     runs-on: ubuntu-latest
