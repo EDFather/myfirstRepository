@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-node@v3
       - name: install and start npm
       - run: npm install
+      - run: npm start
   Docker_Build: 
     runs-on: ubuntu-latest
     steps:
