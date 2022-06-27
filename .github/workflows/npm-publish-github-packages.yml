@@ -19,4 +19,4 @@ jobs:
        run: echo $IMAGE_NAME    
      - name: push docker conteiner ghcr.io
        run: IMAGE_ID=ghcr.io/${{ github.repository_owner }}/EDFather:${{ github.run_id }} 
-            echo "${{ IMAGE_ID }}"
+            echo $IMAGE_ID
