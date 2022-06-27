@@ -1,5 +1,5 @@
 name: ssh_docker
-on:
+on: 
   push:
 jobs:
   docker:
@@ -26,6 +26,7 @@ jobs:
   ssh_test:
     name: ssh_test
     runs-on: ubuntu-latest
+    needs: docker
     steps:
       - name: executing remote ssh commands 
         uses: appleboy/ssh-action@master
