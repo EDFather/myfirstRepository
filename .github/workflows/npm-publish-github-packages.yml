@@ -6,15 +6,6 @@ name: Chat4
 on:
   push:  
 jobs:
-  FIRST_Build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - name: install npm
-      - run: npm install
-      - name:  start
-      - run: npm start
   Docker_Build: 
     runs-on: ubuntu-latest
     steps:
