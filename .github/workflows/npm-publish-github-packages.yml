@@ -13,4 +13,5 @@ jobs:
        run:  docker build . -t $IMAGE_NAME -f Dockerfile
      - name: push docker conteiner ghcr.io
        run: IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME:${{ github.run_id }} 
-            docker push $IMAGE_ID
+            
+    
