@@ -1,21 +1,7 @@
 name: ssh_docker
 on:
   push:
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: edfather
 jobs:
-  ssh_test:
-    name: ssh_test
-    runs-on: ubuntu-latest
-    steps:
-      - name: executing remote ssh commands 
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
   docker:
     runs-on: ubuntu-latest
     steps:
@@ -37,3 +23,17 @@ jobs:
         with:
           push: true
           tags:  edfather/myfirstrepository:latest
+  ssh_test:
+    name: ssh_test
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands 
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: 
+            docker pull edfather/myfirstrepository |
+            docker run --detach --publish 3000:3000  edfather/myfirstrepository:latest
