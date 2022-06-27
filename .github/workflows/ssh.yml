@@ -1,7 +1,9 @@
 name: ssh_docker
 on:
   push:
-
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 jobs:
   ssh_test:
    name: ssh_test
@@ -15,4 +17,4 @@ jobs:
          key: ${{ secrets.KEY }}
          port: ${{ secrets.PORT }}
          script: 
-               docker pull ${{ steps.meta.outputs.tags }}
+             docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
