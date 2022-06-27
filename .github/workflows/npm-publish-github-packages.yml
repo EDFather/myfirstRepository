@@ -2,13 +2,15 @@ name: Chat4
 
 on:
   push:  
+env:
+  IMAGE_NAME: DockerCHat
 jobs:
   Docker_Build: 
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v3
      - name: push Docker Conteiner github
-       run:  docker build . 
+       run:  docker build -t $IMAGE_NAME .
      - name: Log into GitHub Container Registry
        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
      - name: Rub Log Github 
