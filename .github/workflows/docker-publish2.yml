@@ -1,6 +1,8 @@
 name: Docker_push
 on:
   push:
+  schedule:
+   - cron:  '30 5,17 * * *'
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -76,5 +78,5 @@ jobs:
          key: ${{ secrets.KEY }}
          port: ${{ secrets.PORT }}
          script: 
-               cd ~ |
-               echo "hello Dimka" >> filetestssh.txt
+               docker pull ${{ steps.meta.outputs.tags }}
+               
