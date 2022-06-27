@@ -8,7 +8,7 @@ jobs:
     steps:
      - uses: actions/checkout@v3
      - name: push Docker Conteiner github
-       run:  docker build . -t $IMAGE_NAME --file Dockerfile
+       run:  docker build . --file Dockerfile  --t $IMAGE_NAME
      - name: Log into GitHub Container Registry
        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
      - name: Rub Log Github 
