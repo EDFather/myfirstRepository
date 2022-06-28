@@ -23,8 +23,8 @@ jobs:
         with:
           push: true
           tags:  edfather/myfirstrepository:latest
-  ssh_build_dockerapp:
-    name: ssh_build_dockerapp
+  ssh_rm_dockerapp:
+    name: ssh_rm_dockerapp
     runs-on: ubuntu-latest
     needs: docker
     steps:
@@ -38,5 +38,20 @@ jobs:
           script: |
             docker stop $(docker ps -a -q) 
             docker rm $(docker ps -a -q) 
+            docker rmi $(docker images -a -q) 
+             
+  ssh_build_dockerapp:
+    name: ssh_build_dockerapp
+    runs-on: ubuntu-latest
+    needs: ssh_rm_dockerapp
+    steps:
+      - name: executing remote ssh commands 
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
             docker pull edfather/myfirstrepository 
-            docker run --detach --publish 3000:3000  edfather/myfirstrepository:latest 
+            docker run --detach --publish 3000:3000  edfather/myfirstrepository:latest
