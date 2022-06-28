@@ -1,7 +1,4 @@
 name: Docker_push
-on:
-  schedule:
-   - cron:  '30 5,17 * * *'
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
