@@ -39,9 +39,19 @@ jobs:
           script: 
             docker stop $(docker ps -a ) |
             docker rm $(docker ps -a -q) 
-          needs: docekr sto and docker rm
-          script:
+    name: docker_rmi_push_run
+    runs-on: ubuntu-latest
+    needs: ssh_test
+    steps:
+      - name: executing remote ssh  
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+        - name: docekr rmi and docker rm 
+          script: 
             docker rmi $(docker images -a -q) |
             docker pull edfather/myfirstrepository |
-            docker run --detach --publish 3000:3000  edfather/myfirstrepository:latest
-
+            docker run --detach --publish 3000:3000  edfather/myfirstrepository:latest 
