@@ -34,12 +34,11 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          script: 
-          - name: docker stop 
-            run: docker stop $(docker ps -a ) 
-          - name: docker rm
-            run: docker rm $(docker ps -a -q) 
+          port: ${{ secrets.PORT }} 
+      - name: docker stop 
+        run: docker stop $(docker ps -a ) 
+      - name: docker rm
+        run: docker rm $(docker ps -a -q) 
   docker_rmi_push_run:  
     name: docker_rmi_push_run
     runs-on: ubuntu-latest
