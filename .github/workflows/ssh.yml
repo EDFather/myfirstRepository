@@ -35,9 +35,13 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
+        - name: docekr sto and docker rm 
           script: 
-            docker stop $(docker ps -a -q) |
-            docker rm $(docker ps -a -q) |
+            docker stop $(docker ps -a ) |
+            docker rm $(docker ps -a -q) 
+          needs: docekr sto and docker rm
+          script:
             docker rmi $(docker images -a -q) |
             docker pull edfather/myfirstrepository |
             docker run --detach --publish 3000:3000  edfather/myfirstrepository:latest
+
