@@ -35,7 +35,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-        - name: docekr sto and docker rm 
           script: 
             docker stop $(docker ps -a ) |
             docker rm $(docker ps -a -q) 
@@ -51,7 +50,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-        - name: docekr rmi and docker rm 
           script: 
             docker rmi $(docker images -a -q) |
             docker pull edfather/myfirstrepository |
