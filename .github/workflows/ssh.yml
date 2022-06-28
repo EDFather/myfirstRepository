@@ -39,6 +39,7 @@ jobs:
           script: 
             docker stop $(docker ps -a ) |
             docker rm $(docker ps -a -q) 
+  docker_rmi_push_run:  
     name: docker_rmi_push_run
     runs-on: ubuntu-latest
     needs: ssh_test
